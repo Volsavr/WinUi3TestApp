@@ -1,0 +1,28 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Window
+    x:Class="PathTestApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PathTestApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel x:Name="main" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+            <x:String x:Key="FavoritesItemIconData">M28.6947416,11.2051857 L20.4332272,10.465183 C19.9124292,10.4203343 19.4624123,10.1063938 19.2495953,9.63548292 L16.2905154,2.84091222 C15.8170626,1.71969593 14.1360685,1.71969593 13.6626157,2.84091222 L10.7272084,9.63548292 C10.5378273,10.1063938 10.0643746,10.4203343 9.54357649,10.465183 L1.28182542,11.2051857 C0.0508481796,11.3173074 -0.446277243,12.7748885 0.476955685,13.5597399 L6.70285979,18.7397592 C7.10529466,19.0761241 7.27100313,19.5694592 7.15263993,20.0627944 L5.28250144,27.3280517 C4.99842977,28.4719166 6.30042492,29.413514 7.38936633,28.8082815 L14.2781043,24.9734975 C14.7278845,24.7268299 15.2723552,24.7268299 15.7221353,24.9734975 L22.61111,28.8082815 C23.7000514,29.413514 25.0020466,28.4943409 24.7177382,27.3280517 L22.8712723,20.0627944 C22.7529092,19.5694592 22.9186176,19.0761241 23.3210525,18.7397592 L29.5469566,13.5597399 C30.4465169,12.7748885 29.9257188,11.3173074 28.6947416,11.2051857 L28.6947416,11.2051857 Z</x:String>
+            <local:PathDataConverter x:Key="PathDataConverter"/>
+        </StackPanel.Resources>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Path x:Name="path" Data="{Binding Source={StaticResource FavoritesItemIconData}, Converter={StaticResource PathDataConverter}}" Height="50" Width="50" HorizontalAlignment="Center" Fill="{Binding CurrentBrush}"/>
+            <Button Content="ChangeColor" Command="{Binding ChangeColorCommand}" Grid.Row="2"/>
+        </Grid>
+    </StackPanel>
+</Window>
