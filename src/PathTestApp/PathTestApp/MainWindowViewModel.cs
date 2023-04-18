@@ -44,7 +44,6 @@ namespace PathTestApp
         public ICommand ChangeColorCommand { get; private set; }
         #endregion
 
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged; 
         #endregion

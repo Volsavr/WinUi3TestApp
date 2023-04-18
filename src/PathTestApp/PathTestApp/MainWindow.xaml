@@ -38,28 +38,41 @@
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
 
+                <!--region PathData approach-->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Icon without resizing. It means that resource prepared in right size and no need of size change -->
                     <Path Margin="5,0" Data="{Binding Source={StaticResource SettingsItemIconData}, Converter={StaticResource PathDataConverter}}" Fill="{Binding CurrentBrush}"/>
 
+                    <!-- Resizing is done using ViewBox-->
                     <Viewbox Margin="5,0" Height="30" Width="30">
                         <Path Data="{Binding Source={StaticResource SettingsItemIconData}, Converter={StaticResource PathDataConverter}}" Fill="{Binding CurrentBrush}"/>
                     </Viewbox>
                 </StackPanel>
+                <!--endregion-->
             
+                <!--region Font approach with native font family--> 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Segoe Fluent Icons is default for Win 11 (https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font) -->
                     <FontIcon Margin="5,0" FontSize="26" FontFamily="Segoe Fluent Icons" Glyph="&#xe713;" Foreground="{Binding CurrentBrush}"/>
+                    <!-- Segoe MDL2 Assets is default for Win 10 (https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-ui-symbol-font) -->
                     <FontIcon Margin="5,0" FontSize="26" FontFamily="Segoe MDL2 Assets" Glyph="&#xF8B0;" Foreground="{Binding CurrentBrush}"/>
 
+                    <!-- SymbolIcon is special control that use predefined enum of symbols and use default font family. Resizing is done using ViewBox -->
                     <Viewbox Margin="5,0" Height="26" Width="26">
                         <SymbolIcon Symbol="Setting" Foreground="{Binding CurrentBrush}"/>
                     </Viewbox>
                 </StackPanel>
+                <!--endregion-->
 
+                <!--region Font approach with custom font family-->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Font Icon with FontFamily as StaticResource-->
                     <FontIcon Margin="5,0" FontSize="26" FontFamily="{StaticResource Fontello}" Glyph="&#xe815;" Foreground="{Binding CurrentBrush}"/>
-                    <TextBlock Margin="5,0" FontSize="26" FontFamily="{StaticResource Fontello}" Text="&#xe815;" Foreground="{Binding CurrentBrush}"/>
+                    <!-- Loading into TextBlock using explicit link to file to FontFamily file-->
                     <TextBlock Margin="5,0" FontSize="26" FontFamily="ms-appx:///Assets/fontello.ttf#fontello" Text="&#xe815;" Foreground="{Binding CurrentBrush}"/>
                 </StackPanel>
+                <!--endregion-->
+                
             </Grid>
             <Button Grid.Row="4" Content="Change color" Command="{Binding ChangeColorCommand}"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
