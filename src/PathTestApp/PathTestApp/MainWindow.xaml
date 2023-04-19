@@ -47,6 +47,9 @@
                     <Viewbox Margin="5,0" Height="30" Width="30">
                         <Path Data="{Binding Source={StaticResource SettingsItemIconData}, Converter={StaticResource PathDataConverter}}" Fill="{Binding CurrentBrush}"/>
                     </Viewbox>
+
+                    <!-- Using PathIcon, allows to rid of converter -->
+                    <PathIcon Data="{StaticResource SettingsItemIconData}" Foreground="{Binding CurrentBrush}"/>
                 </StackPanel>
                 <!--endregion-->
             
@@ -67,7 +70,7 @@
                 <!--region Font approach with custom font family-->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <!-- Font Icon with FontFamily as StaticResource-->
-                    <FontIcon Margin="5,0" FontSize="26" FontFamily="{StaticResource Fontello}" Glyph="&#xe815;" Foreground="{Binding CurrentBrush}"/>
+                    <FontIcon Margin="5,0" FontSize="26" FontFamily="{StaticResource Fontello}" Glyph="heart" Foreground="{Binding CurrentBrush}"/>
                     <!-- Loading into TextBlock using explicit link to file to FontFamily file-->
                     <TextBlock Margin="5,0" FontSize="26" FontFamily="ms-appx:///Assets/fontello.ttf#fontello" Text="&#xe815;" Foreground="{Binding CurrentBrush}"/>
                 </StackPanel>
